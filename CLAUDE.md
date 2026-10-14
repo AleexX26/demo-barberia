@@ -37,7 +37,7 @@ node servir.mjs    # http://localhost:4321
 node scripts/capturar.mjs http://localhost:4321/ 390 .impeccable/review mobile 1600   # capturas para revisar
 ```
 
-Despliegue: subir `publico/` a cualquier hosting estático. `_headers` vale tal cual en Netlify o Cloudflare Pages.
+Despliegue: cada push a main publica en GitHub Pages (`.github/workflows/pages.yml`). Alternativa: subir `publico/` a cualquier hosting estático; `_headers` vale tal cual en Netlify o Cloudflare Pages.
 
 ## Decisiones
 
@@ -47,7 +47,7 @@ Despliegue: subir `publico/` a cualquier hosting estático. `_headers` vale tal 
 - 2026-10-14: la CSP va en `publico/_headers` y no en un `<meta>`, porque con `'self'` en `file://` Chrome bloquearía el JS al abrir el HTML con doble clic.
 - 2026-10-14: días como botones de radio (próximos 21) en vez de `<input type=date>`, porque el nativo no permite bloquear días concretos. Los cerrados se ven deshabilitados con su motivo (Cerrado, Libra, Completo).
 - 2026-10-14: dirección de diseño fijada en el plan aprobado: carbón #141210, crema #ede6d8, latón #c49a5a; sin degradados, filetes, sombras en reposo, etiquetas en mayúsculas ni tarjetas anidadas. Instrument Sans se mantiene aunque impeccable la marca como fuente muy usada, porque la aprobó el usuario.
-- 2026-10-14: proyecto en `Proyectos/peluqueria/` (decisión del usuario), fuera del repositorio de Atelier Barber. Repositorio propio público: https://github.com/AleexX26/demo-barberia (rama main).
+- 2026-10-14: proyecto en `Proyectos/peluqueria/` (decisión del usuario), fuera del repositorio de Atelier Barber. Repositorio propio público: https://github.com/AleexX26/demo-barberia (rama main). Publicada en GitHub Pages (https://aleexx26.github.io/demo-barberia/) con `.github/workflows/pages.yml`, que ejecuta `node build.mjs` y sube `publico/` en cada push a main. En Pages no se aplican `_headers` ni el `robots.txt` (no está en la raíz del dominio); el noindex lo hace el `<meta name="robots">`.
 
 ## Patrones reutilizables
 
